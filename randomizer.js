@@ -6,17 +6,17 @@
         fonts: ['Courier New', 'Courier', 'monospace', 'Comic Sans MS', 'Book Antiqua', 'Palatino'],
         interval: 3000
     };
-    var hasExecuted = false;
+    var hasStarted = false;
 
     $(document).ready(function() {
         $('<button />', {
             text: 'Randomize',
-            click: hasExecuted ? null : randomizePage
+            click: hasExecuted ? null : randomizeAtributes
         }).prependTo($(options.prependTo));
     })
 
-    function randomizePage() {
-        hasExecuted = true;
+    function randomizeAtributes() {
+        hasStarted = true;
 
         setInterval(function() {
             $('*').each(function() {
@@ -35,18 +35,22 @@
     function getRndAttributes() {
         var backgroundColor, attributes = {};
 
-        attributes.color = options.colors[Math.floor(Math.random() * options.colors.length)];
+        attributes.color = options.colors[getRndInt(0, options.colors.length)];
 
-        // Background color mustn't be the same as the text color
+        // Background color should be different from the text color (otherwise you can't see the text)
         do {
-            backgroundColor = options.colors[Math.floor(Math.random() * options.colors.length)];
+            backgroundColor = options.colors[getRndInt(0, options.colors.length)];
         } while (backgroundColor == attributes.color);
-        
+
         attributes.backgroundColor =  backgroundColor;
 
-        attributes.fontFamily =  options.fonts[Math.floor(Math.random() * options.fonts.length)];
-        attributes.fontSize =  Math.floor((Math.random() * 100) + 4).toString() + 'px';
+        attributes.fontFamily =  options.fonts[getRndInt(0, options.fonts.length)];
+        attributes.fontSize =  getRndInt(4, 100).toString() + 'px';
 
         return attributes;
+    }
+
+    function getRndInt(min, max) {
+        return Math.floor((Math.random() * max) + min);
     }
 }(jQuery, window, document));
