@@ -1,35 +1,38 @@
 ;(function ($, window, document, undefined) {
 
     var options = {
-        prependTo: 'body',
+        secret: 'xc3511',
         colors: ['Pink', 'Black', 'White', 'Yellow', 'Orange', 'Red', 'Purple', 'Blue', 'Brown', 'Grey', 'Green'],
-        fonts: ['Courier New', 'Courier', 'monospace', 'Comic Sans MS', 'Book Antiqua', 'Palatino'],
+        fonts: ['Courier New', 'Courier', 'Comic Sans MS', 'Book Antiqua', 'Palatino'],
         interval: 3000
     };
     var hasStarted = false;
+    var secretAscii = getAscii(options.secret);
+    var eventData;
 
-    $(document).ready(function() {
-        $('<button />', {
-            text: 'Randomize',
-            click: hasStarted ? null : randomizeAtributes
-        }).prependTo($(options.prependTo));
-    })
+    $(document).on('keypress', function(event) {
+        if (!hasStarted) {
+            eventData += event.which.toString();
+
+            // Check if correct secret has been entered
+            if (eventData.indexOf(secretAscii) !== -1) {
+                hasStarted = true;
+                randomizeAtributes();
+                setInterval(randomizeAtributes, options.interval);
+            }
+        }
+    });
 
     function randomizeAtributes() {
-        hasStarted = true;
-
-        setInterval(function() {
-            $('*').each(function() {
-                var attributes = getRndAttributes();
-                $(this).css({
-                    'color': attributes.color,
-                    'background-color': attributes.backgroundColor,
-                    'font-family': attributes.fontFamily,
-                    'font-size': attributes.fontSize,
-                })
-            });
-        },
-        options.interval);
+        $('*').each(function() {
+            var attributes = getRndAttributes();
+            $(this).css({
+                'color': attributes.color,
+                'background-color': attributes.backgroundColor,
+                'font-family': attributes.fontFamily,
+                'font-size': attributes.fontSize
+            })
+        });
     }
 
     function getRndAttributes() {
@@ -52,5 +55,14 @@
 
     function getRndInt(min, max) {
         return Math.floor((Math.random() * max) + min);
+    }
+
+    function getAscii(string) {
+        var asciiString = '';
+
+        for (var i = 0; i < string.length; i++) {
+            asciiString += string.charCodeAt(i);
+        }
+        return asciiString;
     }
 }(jQuery, window, document));
