@@ -11,7 +11,7 @@
     $(document).ready(function() {
         $('<button />', {
             text: 'Randomize',
-            click: hasExecuted ? null : randomizeAtributes
+            click: hasStarted ? null : randomizeAtributes
         }).prependTo($(options.prependTo));
     })
 
