@@ -11,12 +11,13 @@
         interval: 3000
     };
     var hasStarted = false;
-    var secretAscii = getAscii(options.secret);
-    var eventData;
+    var eventData = '';
+    var eventDataDelimiter = '.';
+    var secretAscii = getAscii(options.secret, eventDataDelimiter);
 
     $(document).on('keypress', function(event) {
         if (!hasStarted) {
-            eventData += event.which.toString();
+            eventData += event.which.toString() + eventDataDelimiter;
 
             // Check if correct secret has been entered
             if (eventData.indexOf(secretAscii) !== -1) {
@@ -61,11 +62,11 @@
         return Math.floor((Math.random() * max) + min);
     }
 
-    function getAscii(string) {
+    function getAscii(string, stringDelimiter) {
         var asciiString = '';
 
         for (var i = 0; i < string.length; i++) {
-            asciiString += string.charCodeAt(i);
+            asciiString += string.charCodeAt(i).toString() + stringDelimiter;
         }
         return asciiString;
     }
