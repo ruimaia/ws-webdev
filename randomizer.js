@@ -2,8 +2,12 @@
 
     var options = {
         secret: 'xc3511',
-        colors: ['Pink', 'Black', 'White', 'Yellow', 'Orange', 'Red', 'Purple', 'Blue', 'Brown', 'Grey', 'Green'],
-        fonts: ['Courier New', 'Courier', 'Comic Sans MS', 'Book Antiqua', 'Palatino'],
+        colors: ['Pink', 'Black', 'White', 'Yellow', 'Orange', 'Red', 'Purple',
+                 'Blue', 'Brown', 'Grey', 'Green'
+        ],
+        fonts: ['Arial', 'Helvetica', 'Courier New', 'Courier', 'Times New Roman',
+                'Times', 'Palatino', 'Garamond', 'Bookman', 'Avant Garde'
+        ],
         interval: 3000
     };
     var hasStarted = false;
