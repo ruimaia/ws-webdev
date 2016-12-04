@@ -1,0 +1,101 @@
+body{
+    background-image: url("background.jpg");
+    background-size: cover; 
+    background-attachment: fixed; 
+    background-position: center center; 
+    background-repeat: no-repeat;
+    font-family: 'Raleway', sans-serif;
+    font-weight: 200; 
+    -webkit-background-size: cover; 
+}
+
+h1{
+    text-align: center;
+}
+
+h2{
+    text-align: center;
+    padding: 10px;
+}
+
+a{
+    text-decoration: none;
+}
+
+
+.body_container{
+    background-color: none;
+    margin: 0 auto;
+    width: 80%;
+}
+
+.text{
+    margin: 10px;
+    text-align: justify;
+    font-weight: bold;
+    font-size: 1.4vw;
+    color: black;
+}
+
+img.avatar{
+    display: block;
+    margin: 0 auto;    
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+    border: 3px solid white;
+}
+
+img.link_img{
+    width: 38px;
+    height: 38px;
+    border: 0;
+}
+
+hr{ 
+    width: 100%;
+    height: 2px;
+    background: white 
+}
+
+.links{
+  color: white;
+  text-align: center;
+}
+
+div.skills_interests{
+    width: 48%;
+    background-color: white;
+    border-radius: 5px;
+    margin: 10px auto;
+    opacity: 0.4;
+}
+
+div.right{
+    float: right;
+}
+
+div.left{
+    float: left;
+}
+
+.skills_interests li{
+    list-style-type: none;
+    line-height: 27px;
+    font-size: 1.18vw;   
+}
+
+div.experience{
+    width:100%;
+    background-color: white;
+    border-radius: 5px;
+    margin:10px auto;
+    opacity: 0.4;
+    padding: 3px;
+}
+
+.experience li{
+    list-style-type: none;
+    line-height: 27px;
+    font-size: 1.18vw;  
+}
